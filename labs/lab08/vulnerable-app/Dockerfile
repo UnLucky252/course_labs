@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY app.py .
+COPY . .
 
 ENV APP_DB_PATH=/app/app.db
 ENV PYTHONUNBUFFERED=1
