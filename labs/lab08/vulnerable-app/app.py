@@ -87,7 +87,7 @@ def search():
 
     template = """
     <h2>Поиск пользователя</h2>
-    <p>Запрос: <code>{{ query }}</code></p>
+    <p>Запрос: <code>{{ query | safe }}</code></p>
     {% if error %}
       <p style="color:red;">SQL error: {{ error }}</p>
     {% endif %}
