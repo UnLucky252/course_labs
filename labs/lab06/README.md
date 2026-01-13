@@ -4,14 +4,11 @@
 <a href="https://daringfireball.net/projects/markdown"><img src="https://img.shields.io/static/v1?logo=markdown&logoColor=fff&label=&message=Markdown&color=36393f&style=flat" alt="Markdown"></a> 
 <a href="https://symbl.cc/en/unicode-table"><img src="https://img.shields.io/static/v1?logo=unicode&logoColor=fff&label=&message=Unicode&color=36393f&style=flat" alt="Unicode"></a> 
 <a href="https://shields.io"><img src="https://img.shields.io/static/v1?logo=shieldsdotio&logoColor=fff&label=&message=Shields&color=36393f&style=flat" alt="Shields"></a>
-<a href="https://img.shields.io/badge/Risk_Analyze-2448a2"><img src="https://img.shields.io/badge/Course-Risk_Analysis-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/AppSec-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/Contributor-Шмаков_И._С.-8b9aff" alt="Contributor Badge"></a></div>
+<a href="https://img.shields.io/badge/Risk_Analyze-2448a2"><img src="https://img.shields.io/badge/Course-Risk_Analysis-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/AppSec-2448a2" alt= "RA"></a> <img src="https://img.shields.io/badge/Contributor-Анисимов_М._А.-8b9aff" alt="Contributor Badge"></a></div>
 
 ***
 
-Салют :wave:,<br>
 Данная лабораторная работа посвещена изучению аудита безопасности `Docker` при использовании `Docker Bench Security`. Мы рассмотрим как с ним работать. Мы разберем как проверить конфигурации безопасности и выявить их не корректность, как произвести чекап с `CIS Docker Benchmark v1.6.0`.
-
-Для сдачи данной работы также будет требоваться ответить на дополнительыне вопросы по описанным темам.
 
 ***
 
@@ -65,7 +62,7 @@ lab06
 
 ## Задание
 
-- [ ] 1. Необходимо установить `Docker Engine` для Linux
+- ✅ 1. Необходимо установить `Docker Engine` для Linux
 
 ```bash
 $ sudo apt-get update
@@ -76,8 +73,8 @@ $ sudo systemctl start docker
 $ docker pull docker/docker-bench-security
 ```
 
-- [ ] 2. Проверьте работу докера и сделать скрипт `audit.sh` исполняемым
-- [ ] 3. Развернуть уязвимое приложение как отдельные стенды
+- ✅ 2. Проверьте работу докера и сделать скрипт `audit.sh` исполняемым
+- ✅ 3. Развернуть уязвимое приложение как отдельные стенды
 
 ```bash
 $ docker compose up -d # основной web, app, postgres
@@ -87,7 +84,7 @@ $ docker-compose -f dvulnerable-app.yml up -d # поверх для vulnerable-w
     -d # фоновый режим
 ```
 
-- [ ] 4. Запустите скрипт из `venv` и проанализируйте то, что вывело на терминале и что вывело при конвертировании
+- ✅ 4. Запустите скрипт из `venv` и проанализируйте то, что вывело на терминале и что вывело при конвертировании
 
 ```bash
 $ python3 -m venv venv
@@ -97,13 +94,13 @@ $ ./audit.sh
 $ deactivate # или $ deactivate 2>/dev/null || true
 ```
  
-- [ ] 5. Проведите анализ уязвимостей, опишите их причину возникновения
-- [ ] 6. Опишите влияния уязвимостей, их сценарий атаки
-- [ ] 7. Оцените риски ИБ и предложите меры для их снижения: 
+- ✅ 5. Проведите анализ уязвимостей, опишите их причину возникновения
+- ✅ 6. Опишите влияния уязвимостей, их сценарий атаки
+- ✅ 7. Оцените риски ИБ и предложите меры для их снижения: 
 > - Следует разобрать `.yaml` описав, что в них считается не безопасным и почему
 > - Опишите сценарии реализации рисков CR, DL
 > - Предложили исправленные `.yaml`
-- [ ] 8. Сделайте анализ уязвимостей из сгенерированных файлов .odt, .xslx и опишите их в отчете. Файлы конвертируются в эти директории
+- ✅ 8. Сделайте анализ уязвимостей из сгенерированных файлов .odt, .xslx и опишите их в отчете. Файлы конвертируются в эти директории
 
 ```bash
 "├── json/          (Trivy JSON outputs)"
@@ -112,8 +109,8 @@ $ deactivate # или $ deactivate 2>/dev/null || true
 "└── odt/           (OpenDocument Text files)"
 ```
 
-- [ ] 9. Подготовьте отчет `gist`.
-- [ ] 10. Почистите кеш от `venv` и остановите уязвимостей приложение, почистите контейнера
+- ✅ 9. Подготовьте отчет `gist`.
+- ✅ 10. Почистите кеш от `venv` и остановите уязвимостей приложение, почистите контейнера
 
 ```bash
 $ rm -rf venv
@@ -135,18 +132,10 @@ $ chmod +x xxx.sh # разрешение прав при permission denied
 
 ***
 
-## Links
+## Ссылки
 
-- [Docker](https://docs.docker.com/)
-- [Docker Engine security](https://docs.docker.com/engine/security/)
-- [Docker Bench for Security](https://github.com/docker/docker-bench-security)
-- [CIS Docker Benchmark](https://www.cisecurity.org/benchmark/docker)
-- [Trivy: Container Security Scanner](https://aquasecurity.github.io/trivy/)
-- [Markdown](https://stackedit.io)
-- [Gist](https://gist.github.com)
-- [GitHub Docs](https://docs.github.com/en)
-- [GitHub CLI](https://cli.github.com)
+Ссылка на Gist: https://gist.github.com/8a8cc1f831845c6e3da7953b2fa32820.git
 
-Copyright (c) 2025 Elijah S Shmakov
+Репозиторий проекта: https://github.com/UnLucky252/risks_labs
 
-![Logo](../../assets/logotype/logo.jpg)
+Copyright (c) 2025 Maxim Anisimov
