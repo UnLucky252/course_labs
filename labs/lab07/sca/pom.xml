@@ -13,30 +13,28 @@
     <name>sca-demo</name>
 
     <dependencies>
-        <!-- Уязвимые зависимости для демонстрации -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.1.6</version> <!-- Устаревшая версия с уязвимостями -->
+            <version>2.1.6</version>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
-            <version>2.4.6</version> <!-- Устаревшая версия -->
+            <version>2.4.6</version>
         </dependency>
 
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version> <!-- Устаревшая, есть уязвимости -->
+            <version>3.1</version>
         </dependency>
         
-        <!-- Дополнительная уязвимая зависимость -->
         <dependency>
             <groupId>org.apache.struts</groupId>
             <artifactId>struts2-core</artifactId>
-            <version>2.3.14.2</version> <!-- Известные уязвимости -->
+            <version>2.3.14.2</version>
         </dependency>
     </dependencies>
 
@@ -50,7 +48,9 @@
                     <format>ALL</format>
                     <outputDirectory>${project.basedir}/dependency-check-report</outputDirectory>
                     <failBuildOnCVSS>0.0</failBuildOnCVSS>
-                    <autoUpdate>false</autoUpdate>
+                    <autoUpdate>true</autoUpdate>
+                    <dataDirectory>/home/unlucky/.dependency-check-data</dataDirectory>
+                    <nvdApiKey>980e0197-8173-4b01-a191-4fa07b73dc33</nvdApiKey>
                 </configuration>
                 <executions>
                     <execution>
