@@ -35,7 +35,7 @@ security:
 logging:
   level: "DEBUG"
   log_sql: true
-  log_sensitive_ true
+  log_sensitive: false
   log_file: "app-debug.log"
 
 features:

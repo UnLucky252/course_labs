@@ -30,29 +30,37 @@
             <artifactId>commons-httpclient</artifactId>
             <version>3.1</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>2.3.14.2</version>
+        </dependency>
     </dependencies>
 
     <build>
-    <plugins>
-        <plugin>
-        <groupId>org.owasp</groupId>
-        <artifactId>dependency-check-maven</artifactId>
-        <version>12.1.0</version>
-        <configuration>
-            <format>ALL</format>
-            <outputDirectory>${project.basedir}/dependency-check-report</outputDirectory>
-            <failBuildOnCVSS>0.0</failBuildOnCVSS>
-            <autoUpdate>false</autoUpdate>
-        </configuration>
-        <executions>
-            <execution>
-            <goals>
-                <goal>check</goal>
-            </goals>
-            </execution>
-        </executions>
-        </plugin>
-    </plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>12.1.0</version>
+                <configuration>
+                    <format>ALL</format>
+                    <outputDirectory>${project.basedir}/dependency-check-report</outputDirectory>
+                    <failBuildOnCVSS>0.0</failBuildOnCVSS>
+                    <autoUpdate>true</autoUpdate>
+                    <dataDirectory>/home/unlucky/.dependency-check-data</dataDirectory>
+                    <nvdApiKey>980e0197-8173-4b01-a191-4fa07b73dc33</nvdApiKey>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

@@ -19,6 +19,7 @@ echo "[i] Using image: ${ZAP_IMAGE}"
 echo "[i] Reports will be saved to ${REPORT_DIR}"
 
 docker run --rm \
+  --network lab08-net \
   -v "${REPORT_DIR}:/zap/wrk" \
   "${ZAP_IMAGE}" \
   zap-baseline.py \
