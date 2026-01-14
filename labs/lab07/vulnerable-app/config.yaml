@@ -1,53 +1,50 @@
 app:
   name: "lab07-vulnerable-app"
-  environment: "${APP_ENV:-production}"
-  debug: "${DEBUG:-false}"
-  verbose_logging: false
+  environment: "development"
+  debug: true
+  verbose_logging: true
 
 server:
   host: "0.0.0.0"
   port: 8080
   enable_metrics: true
-  allow_origin: "${ALLOW_ORIGIN:-*}"
+  allow_origin: "*"
 
 database:
   engine: "sqlite"
   host: "localhost"
   port: 5432
   name: "vuln_db"
-  user: "${DB_USER:-admin}"
-  password: "${DB_PASSWORD:-}"
+  user: "admin"
+  password: "SuperSecret123"
   pool_size: 20
-  debug_queries: false
+  debug_queries: true
 
 security:
-  allow_registration: false
-  default_admin_user: "${ADMIN_USER:-admin}"
-  default_admin_password: "${ADMIN_PASSWORD:-}"
-  jwt_secret: "${JWT_SECRET:-}"
+  allow_registration: true
+  default_admin_user: "admin"
+  default_admin_password: "Admin123!"
+  jwt_secret: "very-weak-jwt-secret"
   jwt_algorithm: "HS256"
-  enable_csrf_protection: true
-  enable_rate_limit: true
-  allow_insecure_cookies: false
-  session_cookie_secure: true
-  session_cookie_httponly: true
+  enable_csrf_protection: false
+  enable_rate_limit: false
+  allow_insecure_cookies: true
+  session_cookie_secure: false
+  session_cookie_httponly: false
 
 logging:
-  level: "${LOG_LEVEL:-INFO}"
-  log_sql: false
+  level: "DEBUG"
+  log_sql: true
   log_sensitive: false
-  log_file: "app.log"
+  log_file: "app-debug.log"
 
 features:
-  enable_experimental_api: false
-  enable_unsafe_eval: false
-  enable_remote_shell: false
+  enable_experimental_api: true
+  enable_unsafe_eval: true
+  enable_remote_shell: true
 
 integrations:
-  debug_webhook_url: ""
-  enable_unsafe_webhooks: false
+  debug_webhook_url: "http://example.com/debug-hook"
+  enable_unsafe_webhooks: true
   trusted_proxies:
-    - "127.0.0.1"
-    - "10.0.0.0/8"
-    - "172.16.0.0/12"
-    - "192.168.0.0/16"
+    - "0.0.0.0/0"
