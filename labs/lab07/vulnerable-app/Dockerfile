@@ -1,18 +1,24 @@
 FROM python:3.11-slim
+
 WORKDIR /app
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        build-essential \
-        libjpeg-dev zlib1g-dev \
-        libxml2-dev libxslt1-dev && \
-    rm -rf /var/lib/apt/lists/*
+RUN groupadd -r appuser && useradd -r -g appuser appuser
 
-COPY requirements.txt /app/requirements.txt
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY . /app
+
+COPY . .
+
+RUN chown -R appuser:appuser /app
+
+USER appuser
+
 EXPOSE 8080
 
-ENV FLASK_ENV=development
-ENV DEBUG=true
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8080/health')"
+
+ENV FLASK_ENV=production
+ENV DEBUG=false
+
 CMD ["python", "app.py"]
