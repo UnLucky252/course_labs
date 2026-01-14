@@ -2,3 +2,6 @@ lab07/sast/checkov-report.json/
 lab07/sast/semgrep-report.json
 lab07/sca/dependency-check-report/
 lab07/unified_reports/
+lab07/.env
+lab07/.env.local
+lab07/.env.*.local
