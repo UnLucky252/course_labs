@@ -5,10 +5,9 @@ import subprocess
 import json
 import logging
 import re
-import operator
 import ast
 from markupsafe import escape
-from typing import Optional, Dict, Any, List
+from typing import Optional
 import datetime
 
 app = Flask(__name__)
@@ -42,21 +41,21 @@ def safe_calc(expression: str) -> Optional[float]:
         if not re.match(r'^[\d\+\-\*\/\(\)\.]+$', expr):
             return None
 
-        safe_globals = {
-            '__builtins__': None,
-            'abs': abs,
-            'round': round,
-            'min': min,
-            'max': max,
-            'sum': sum,
-            'int': int,
-            'float': float
-        }
+        # safe_globals = {
+        #    '__builtins__': None,
+        #    'abs': abs,
+        #    'round': round,
+        #    'min': min,
+        #    'max': max,
+        #    'sum': sum,
+        #    'int': int,
+        #    'float': float
+        #}
 
         parsed = ast.parse(expr, mode='eval')
 
         for node in ast.walk(parsed):
-            if isinstance(node, (ast.Call, ast.Attribute, ast.Subscript, 
+            if isinstance(node, (ast.Call, ast.Attribute, ast.Subscript,
                                ast.Compare, ast.BoolOp, ast.UnaryOp, ast.BinOp,
                                ast.Num, ast.Constant)):
                 continue
@@ -199,7 +198,8 @@ def read_file():
         return {"error": "Invalid or unsafe file path"}, 400
     allowed_files = ['app.log', 'readme.txt', 'public_data.txt']
     if path not in allowed_files:
-        return {"error": f"File not allowed. Allowed files: {', '.join(allowed_files)}"}, 400
+        return {"error": f"File not allowed. Allowed files: 
+        {', '.join(allowed_files)}"}, 400
 
     try:
         if not os.path.exists(path):
@@ -294,7 +294,8 @@ def health():
         conn = get_db()
         conn.execute("SELECT 1")
         conn.close()
-        return {"status": "healthy", "database": "connected", "timestamp": str(datetime.datetime.now())}
+        return {"status": "healthy", "database": "connected",
+                "timestamp": str(datetime.datetime.now())}
     except Exception as e:
         return {"status": "unhealthy", "error": str(e)}, 500
 
